@@ -12,6 +12,7 @@ welcome to my profile and review my works!
 
 <hr>
 語法跟語法之間要有空格,不然會出錯,#字號必須跟文字有一個空格才能使用
+
 ## [GOOGLE](http://www.google.com)
 小括號是連結地點,中括號是連結文字
 
