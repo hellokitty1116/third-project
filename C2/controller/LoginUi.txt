@@ -1,0 +1,80 @@
+/* 開頭的Option
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		JOptionPane.showMessageDialog(null, "歡迎來到rabbit house");
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LoginUi frame = new LoginUi();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+------------------------------------------------------------------------------
+/*時間
+
+	JLabel timelabel = new JLabel("");
+		timelabel.setForeground(Color.WHITE);
+		timelabel.setFont(new Font("微軟正黑體", Font.BOLD, 20));
+		timelabel.setBounds(516, 0, 223, 49);
+		contentPane.add(timelabel);
+
+		Timer timer = new Timer(100, e -> {
+            String currentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+            setTitle(currentTime); // 更新標題
+            timelabel.setText(currentTime); // 更新標籤内容
+        });
+        timer.start();
+------------------------------------------------------------------------------
+/*登入
+JButton btnNewButton = new JButton("登入");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String Account = account.getText();
+				String Password = password.getText();
+				if (Account == null || Account.isEmpty() || Password == null || Password.isEmpty()) {
+					LoginErrorUi l = new LoginErrorUi();
+					l.setVisible(true);
+					dispose();
+				} else {
+					Customer c = new CustomerDaoImpl().queryCustomer(Account, Password);
+					if (c != null) {
+						cal.saveFile("customer.txt", c);
+						LoginSuccessUi l = new LoginSuccessUi();
+						l.setVisible(true);
+						dispose();
+
+					} else {
+						LoginErrorUi l = new LoginErrorUi();
+						l.setVisible(true);
+						dispose();
+					}
+				}
+			}
+------------------------------------------------------------------------------
+/*離開
+JButton btnNewButton_1 = new JButton("離開");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+			}
+		});
+
+------------------------------------------------------------------------------
+/*註冊
+	JButton btnNewButton_2 = new JButton("註冊");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				AddCustomerUi a = new AddCustomerUi();
+				a.setVisible(true);
+				dispose();
+			}
+		});

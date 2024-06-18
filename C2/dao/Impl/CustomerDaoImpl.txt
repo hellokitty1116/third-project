@@ -1,0 +1,240 @@
+package dao.impl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dao.AdConnection;
+import dao.CustomerDao;
+import model.Customer;
+
+public class CustomerDaoImpl implements CustomerDao{
+
+	public static void main(String[] args) {
+		//System.out.println(new CustomerDaoImpl().queryCustomerById(5).getAddress());
+		/*Customer x=new CustomerDaoImpl().queryCustomerById(5);
+		x.setPhone("556");
+		new CustomerDaoImpl().updateCustomer(x);*/
+		new CustomerDaoImpl().deleteCustomer(6);
+		 
+
+	}
+
+	@Override
+	public void addCustomer(String name, String account, String password, String address, String phone) {
+		Connection conn=AdConnection.getAd();
+		String SQL="insert into customer(name,account,password,address,phone) values(?,?,?,?,?)";
+		try {
+			PreparedStatement ps=conn.prepareStatement(SQL);
+			ps.setString(1, name);
+			ps.setString(2, account);
+			ps.setString(3, password);
+			ps.setString(4, address);
+			ps.setString(5, phone);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void addCustomer(Customer c) {
+		Connection conn=AdConnection.getAd();
+		String SQL="insert into customer(name,account,password,address,phone) values(?,?,?,?,?)";
+		try {
+			PreparedStatement ps=conn.prepareStatement(SQL);
+			ps.setString(1, c.getName());
+			ps.setString(2, c.getAccount());
+			ps.setString(3, c.getPassword());
+			ps.setString(4, c.getAddress());
+			ps.setString(5, c.getPhone());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public List<Customer> queryAll() {
+		Connection conn=AdConnection.getAd();
+		String SQL="select * from customer";
+		List<Customer> l=new ArrayList();
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(SQL);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				Customer c=new Customer();
+				c.setId(rs.getInt("id"));
+				c.setName(rs.getString("name"));
+				c.setAccount(rs.getString("account"));
+				c.setPassword(rs.getString("password"));
+				c.setAddress(rs.getString("address"));
+				c.setPhone(rs.getString("phone"));
+				l.add(c);
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return l;
+	}
+
+	@Override
+	public String queryAll2() {
+		Connection conn=AdConnection.getAd();
+		String SQL="select * from customer";
+		String show="";
+		PreparedStatement ps;
+		try {
+			ps = conn.prepareStatement(SQL);
+			ResultSet rs=ps.executeQuery();	
+			while(rs.next())
+			{
+				show=show+"id"+rs.getInt("id")+
+						"\tname:"+rs.getString("name")+
+						"\t帳號:"+rs.getString("account")+
+						"\t密碼:"+rs.getString("password")+
+						"\t地址:"+rs.getString("address")+
+						"\t電話:"+rs.getString("phone")+"\n";
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return show;
+	}
+
+	@Override
+	public Customer queryCustomer(String account, String password) {
+		Connection conn=AdConnection.getAd();
+		String SQL="select * from customer where account=? and password=?";
+		Customer c=null;
+		try {
+			PreparedStatement ps=conn.prepareStatement(SQL);
+			ps.setString(1, account);
+			ps.setString(2, password);
+			ResultSet rs=ps.executeQuery();
+			if(rs.next())
+			{
+				c=new Customer();
+				c.setId(rs.getInt("id"));
+				c.setName(rs.getString("name"));
+				c.setAccount(rs.getString("account"));
+				c.setPassword(rs.getString("password"));
+				c.setAddress(rs.getString("address"));
+				c.setPhone(rs.getString("phone"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return c;
+	}
+
+	@Override
+	public Customer queryAccount(String account) {
+		Connection conn=AdConnection.getAd();
+		String SQL="select * from customer where account=?";
+		Customer c=null;
+		try {
+			PreparedStatement ps=conn.prepareStatement(SQL);
+			ps.setString(1, account);
+			ResultSet rs=ps.executeQuery();
+			if(rs.next())
+			{
+				c=new Customer();
+				c.setId(rs.getInt("id"));
+				c.setName(rs.getString("name"));
+				c.setAccount(rs.getString("account"));
+				c.setPassword(rs.getString("password"));
+				c.setAddress(rs.getString("address"));
+				c.setPhone(rs.getString("phone"));
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return c;
+	}
+
+	@Override
+	public Customer queryCustomerById(int id) {
+		Connection conn=AdConnection.getAd();
+		String SQL="select * from customer where id=?";
+		Customer c=null;
+		try {
+			PreparedStatement ps=conn.prepareStatement(SQL);
+			ps.setInt(1, id);
+			ResultSet rs=ps.executeQuery();
+			if(rs.next())
+			{
+				c=new Customer();
+				c.setId(rs.getInt("id"));
+				c.setName(rs.getString("name"));
+				c.setAccount(rs.getString("account"));
+				c.setPassword(rs.getString("password"));
+				c.setAddress(rs.getString("address"));
+				c.setPhone(rs.getString("phone"));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return c;
+	}
+
+	@Override
+	public void updateCustomer(Customer c) {
+		Connection conn=AdConnection.getAd();
+		String SQL="update customer set name=?,password=?,address=?,phone=? where id=?";
+		try {
+			PreparedStatement ps=conn.prepareStatement(SQL);
+			ps.setString(1, c.getName());
+			ps.setString(2, c.getPassword());
+			ps.setString(3, c.getAddress());
+			ps.setString(4, c.getPhone());
+			ps.setInt(5, c.getId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	@Override
+	public void deleteCustomer(int id) {
+		Connection conn=AdConnection.getAd();
+		String SQL="delete from customer where id=?";
+		try {
+			PreparedStatement ps=conn.prepareStatement(SQL);
+			ps.setInt(1, id);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}

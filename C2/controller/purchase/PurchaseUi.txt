@@ -1,0 +1,96 @@
+/* combobox區塊
+
+JComboBox<String> kakao = new JComboBox();
+		kakao.setEditable(true);
+		kakao.setBackground(new Color(224, 160, 96));
+		kakao.setFont(new Font("微軟正黑體", Font.BOLD, 17));
+		kakao.setBounds(404, 301, 71, 36);
+		for (int i = 0; i <= 10; i++) {
+			kakao.addItem(Integer.toString(i));
+		}
+		contentPane.add(kakao);
+		
+		JComboBox<String> latte = new JComboBox();
+		latte.setFont(new Font("微軟正黑體", Font.BOLD, 17));
+		latte.setEditable(true);
+		latte.setBackground(new Color(224, 160, 96));
+		latte.setBounds(404, 208, 71, 36);
+		for (int i = 0; i <= 10; i++) {
+			latte.addItem(Integer.toString(i));
+		}
+		contentPane.add(latte);
+		
+		JComboBox<String>espresso = new JComboBox();
+		espresso.setFont(new Font("微軟正黑體", Font.BOLD, 17));
+		espresso.setEditable(true);
+		espresso.setBackground(new Color(224, 160, 96));
+		espresso.setBounds(404, 400, 71, 36);
+		for (int i = 0; i <= 10; i++) {
+			espresso.addItem(Integer.toString(i));
+		}
+		contentPane.add(espresso);
+		
+		JComboBox<String>americano = new JComboBox();
+		americano.setFont(new Font("微軟正黑體", Font.BOLD, 17));
+		americano.setEditable(true);
+		americano.setBackground(new Color(224, 160, 96));
+		americano.setBounds(404, 505, 71, 36);
+		for (int i = 0; i <= 10; i++) {
+			americano.addItem(Integer.toString(i));
+		}
+		contentPane.add(americano);
+		
+		JComboBox<String>tiramisu = new JComboBox();
+		tiramisu.setFont(new Font("微軟正黑體", Font.BOLD, 17));
+		tiramisu.setEditable(true);
+		tiramisu.setBackground(new Color(224, 160, 96));
+		tiramisu.setBounds(955, 208, 71, 36);
+		for (int i = 0; i <= 10; i++) {
+			tiramisu.addItem(Integer.toString(i));
+		}
+		contentPane.add(tiramisu);
+		
+		JComboBox<String>brownie = new JComboBox();
+		brownie.setFont(new Font("微軟正黑體", Font.BOLD, 17));
+		brownie.setEditable(true);
+		brownie.setBackground(new Color(224, 160, 96));
+		brownie.setBounds(955, 301, 71, 36);
+		for (int i = 0; i <= 10; i++) {
+			brownie.addItem(Integer.toString(i));
+		}
+		contentPane.add(brownie);
+
+---------------------------------------------------
+/*
+btnNewButton_1 = new JButton("離開");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				dispose();
+			}
+		});
+
+---------------------------------------------------
+/*
+btnNewButton = new JButton("餐點送出");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				int Kakao=Integer.parseInt(kakao.getSelectedItem().toString());
+				int Espresso=Integer.parseInt(espresso.getSelectedItem().toString());
+				int Latte=Integer.parseInt(latte.getSelectedItem().toString());
+				int Americano=Integer.parseInt(americano.getSelectedItem().toString());
+				int Tiramisu=Integer.parseInt(tiramisu.getSelectedItem().toString());
+				int Brownie=Integer.parseInt(brownie.getSelectedItem().toString());
+				Purchase p=new Purchase(c.getName(),Kakao,Espresso,Latte,Americano,Tiramisu,Brownie);
+				
+				cal.saveFile("purchase.txt",p);
+				ConfirmUi u=new ConfirmUi();
+				u.setVisible(true);
+				dispose();
+				
+				
+			}
+		});
+
+

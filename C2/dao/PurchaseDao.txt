@@ -1,0 +1,22 @@
+package dao;
+
+import java.util.List;
+
+import model.Purchase;
+
+public interface PurchaseDao {
+	//create
+		void add(Purchase p);
+		
+		
+		//read
+		List<Purchase> selectAll();
+		Purchase selectById(int id);
+		
+		
+		//update
+		
+		
+		//delete
+
+}

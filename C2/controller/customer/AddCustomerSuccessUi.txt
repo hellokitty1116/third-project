@@ -1,0 +1,11 @@
+/*
+JButton btnNewButton = new JButton("返回登入");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				LoginUi c=new LoginUi();
+				c.setVisible(true);
+				dispose();
+			}
+		});
+

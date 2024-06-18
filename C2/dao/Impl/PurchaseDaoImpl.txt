@@ -1,0 +1,104 @@
+package dao.impl;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import dao.AdConnection;
+import dao.PurchaseDao;
+import model.Purchase;
+
+public class PurchaseDaoImpl implements PurchaseDao{
+
+	public static void main(String[] args) {
+		/*Purchase p=new Purchase("帥哥", 1, 1, 1, 1, 1, 1);
+		new PurchaseDaoImpl().add(p);*/
+		System.out.println(new PurchaseDaoImpl().selectById(1));
+	}
+
+	@Override
+	public void add(Purchase p) {
+		Connection conn=AdConnection.getAd();
+		String SQL="insert into purchase(name,kakao,espresso,latte,americano,tiramisu,brownie) values(?,?,?,?,?,?,?)";
+		try {
+			PreparedStatement ps=conn.prepareCall(SQL);
+			ps.setString(1,p.getName());
+			ps.setInt(2, p.getKakao());
+			ps.setInt(3, p.getEspresso());
+			ps.setInt(4, p.getLatte());
+			ps.setInt(5, p.getAmericano());
+			ps.setInt(6, p.getTiramisu());
+			ps.setInt(7, p.getBrownie());
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		
+	}
+
+	@Override
+	public List<Purchase> selectAll() {
+		Connection conn=AdConnection.getAd();
+		String SQL="select * from purchase";
+		List<Purchase> l=new ArrayList();
+		try {
+			PreparedStatement ps = conn.prepareStatement(SQL);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next())
+			{
+				Purchase p=new Purchase();
+				p.setId(rs.getInt("id"));
+				p.setName(rs.getString("name"));
+				p.setKakao(rs.getInt("kakao"));
+				p.setEspresso(rs.getInt("espresso"));
+				p.setLatte(rs.getInt("latte"));
+				p.setAmericano(rs.getInt("americano"));
+				p.setTiramisu(rs.getInt("tiramisu"));
+				p.setBrownie(rs.getInt("brownie"));
+				l.add(p);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return l;
+	}
+
+	@Override
+	public Purchase selectById(int id) {
+		Connection conn=AdConnection.getAd();
+		String SQL="select * from purchase where id=?";
+		Purchase p=null;
+		try {
+			PreparedStatement ps=conn.prepareStatement(SQL);
+			ps.setInt(1, id);
+			ResultSet rs=ps.executeQuery();
+			if(rs.next())
+			{
+				p=new Purchase();
+				p.setId(rs.getInt("id"));
+				p.setName(rs.getString("name"));
+				p.setKakao(rs.getInt("kakao"));
+				p.setEspresso(rs.getInt("espresso"));
+				p.setLatte(rs.getInt("latte"));
+				p.setAmericano(rs.getInt("americano"));
+				p.setTiramisu(rs.getInt("tiramisu"));
+				p.setBrownie(rs.getInt("brownie"));
+				
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return p;
+	}
+	
+
+}

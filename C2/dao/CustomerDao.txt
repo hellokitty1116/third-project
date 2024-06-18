@@ -1,0 +1,25 @@
+package dao;
+
+import java.util.List;
+
+import model.Customer;
+
+public interface CustomerDao {
+	//create
+	void addCustomer(String name,String account,String password,String address,String phone);
+	void addCustomer(Customer c);
+	//read
+	List<Customer> queryAll();
+	String queryAll2();
+	Customer queryCustomer(String account,String password);
+	Customer queryAccount(String account);
+	Customer queryCustomerById(int id);
+
+	
+	//update
+	void updateCustomer(Customer c);
+	
+	//delete
+	void deleteCustomer(int id);
+	
+}

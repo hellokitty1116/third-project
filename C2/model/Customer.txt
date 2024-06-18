@@ -1,0 +1,98 @@
+package model;
+
+import java.io.Serializable;
+
+public class Purchase implements Serializable{
+	private Integer id;
+	private String name;
+	private Integer kakao;
+	private Integer espresso;
+	private Integer latte;
+	private Integer americano;
+	private Integer tiramisu;
+	private Integer brownie;
+	
+	public Purchase() {
+		super();
+	}
+
+	public Purchase( String name, Integer kakao, Integer espresso, Integer latte, Integer americano,
+			Integer tiramisu, Integer brownie) {
+		super();
+		
+		this.name = name;
+		this.kakao = kakao;
+		this.espresso = espresso;
+		this.latte = latte;
+		this.americano = americano;
+		this.tiramisu = tiramisu;
+		this.brownie = brownie;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getKakao() {
+		return kakao;
+	}
+
+	public void setKakao(Integer kakao) {
+		this.kakao = kakao;
+	}
+
+	public Integer getEspresso() {
+		return espresso;
+	}
+
+	public void setEspresso(Integer espresso) {
+		this.espresso = espresso;
+	}
+
+	public Integer getLatte() {
+		return latte;
+	}
+
+	public void setLatte(Integer latte) {
+		this.latte = latte;
+	}
+
+	public Integer getAmericano() {
+		return americano;
+	}
+
+	public void setAmericano(Integer americano) {
+		this.americano = americano;
+	}
+
+	public Integer getTiramisu() {
+		return tiramisu;
+	}
+
+	public void setTiramisu(Integer tiramisu) {
+		this.tiramisu = tiramisu;
+	}
+
+	public Integer getBrownie() {
+		return brownie;
+	}
+
+	public void setBrownie(Integer brownie) {
+		this.brownie = brownie;
+	}
+	
+	
+	
+}

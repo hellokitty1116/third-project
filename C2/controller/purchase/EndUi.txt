@@ -1,0 +1,66 @@
+/* TextArea抓資料 
+
+Customer c=(Customer)(cal.readFile("customer.txt"));
+		List<Purchase> y=new PurchaseDaoImpl().selectAll();
+		Purchase[] p=y.toArray(new Purchase[y.size()]);
+		int n = p.length - 1;
+		int sum=p[n].getKakao()*70+
+				p[n].getEspresso()*60+
+				p[n].getLatte()*75+
+				p[n].getAmericano()*55+
+				p[n].getTiramisu()*120+
+				p[n].getBrownie()*90;
+		String OutputDetails="訂單號碼:"+p[n].getId()+
+				"\n\n客戶:"+p[n].getName()+
+				"\t地址:"+c.getAddress()+
+				"\t電話:"+c.getPhone()+
+				"\n-------------------------------" +
+				"\n飲品區" +
+				"\n\nKakao :\t"+p[n].getKakao()+
+				"\nEspresso :\t"+p[n].getEspresso()+
+				"\nLatte :\t"+p[n].getLatte()+
+				"\nAmericano :\t"+p[n].getAmericano()+
+				"\n-------------------------------" +
+				"\n甜點區" + 
+				"\n\nTiramisu :\t"+p[n].getTiramisu()+
+				"\nBrownie :\t"+p[n].getBrownie()+
+				"\n-------------------------------" +
+				"\n合計 : "+sum+"元"+
+				"\n-------------------------------"+
+				"\n謝謝您的惠顧,歡迎下次再來"
+				;
+		
+		output.setText(OutputDetails);
+
+-------------------------------------------------------------------------------------
+
+
+		JButton btnNewButton = new JButton("列印明細");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+				output.setForeground(new Color(0, 0, 0));//打印時更改字體顏色
+				output.setFont(new Font("微軟正黑體", Font.BOLD, 25));//打印時更改字體
+				// 創建 PrinterJob
+		        PrinterJob printerJob = PrinterJob.getPrinterJob();
+		        // 設置 JTextArea 为 Printable
+		        printerJob.setPrintable(output.getPrintable(null, null));
+		        // 顯示打印對話框
+		        if (printerJob.printDialog()) {
+		            try {
+		                // 打印 JTextArea 内容
+		                printerJob.print();
+		            } catch (PrinterException ex) {
+		                ex.printStackTrace();
+		            }}else {
+			            // 取消打印時,用這個字體顏色
+		            	output.setForeground(new Color(255, 255, 255));
+		            	output.setFont(new Font("微軟正黑體", Font.BOLD, 25));
+			        }
+
+				
+		        
+				
+			}
+		});

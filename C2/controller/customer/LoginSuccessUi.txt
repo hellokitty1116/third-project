@@ -1,0 +1,39 @@
+/*視窗置中*
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					LoginSuccessUi frame = new LoginSuccessUi();
+					frame.setLocationRelativeTo(null);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+--------------------------------------------------------
+/*進入菜單畫面
+
+JButton btnNewButton = new JButton("進入菜單畫面");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				PurchaseUi p=new PurchaseUi();
+				p.setVisible(true);
+				dispose();
+			}
+		});
+
+/*讀取方才存檔的帳號
+
+
+		Object o = cal.readFile("customer.txt");
+		
+		Customer c=(Customer) o;
+		
+		show.setText(c.getName()+"您好,恭喜您成功登入");
+		

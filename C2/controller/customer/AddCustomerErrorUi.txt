@@ -1,0 +1,24 @@
+/*
+
+		JButton btnNewButton_1 = new JButton("重新註冊");
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				AddCustomerUi a=new AddCustomerUi();
+				a.setVisible(true);
+				dispose();
+			}
+		});
+-----------------------------------------------------------------------
+/*
+JButton btnNewButton_2 = new JButton("返回登入");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				LoginUi a=new LoginUi();
+				a.setVisible(true);
+				dispose();
+			}
+		});
+
+/

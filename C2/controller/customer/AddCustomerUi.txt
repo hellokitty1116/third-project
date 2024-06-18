@@ -1,0 +1,57 @@
+/*時間
+JLabel timelabel = new JLabel("New label");
+		timelabel.setForeground(new Color(255, 255, 255));
+		timelabel.setFont(new Font("微軟正黑體", Font.BOLD, 20));
+		timelabel.setBounds(891, 10, 215, 48);
+		contentPane.add(timelabel);
+		Timer timer = new Timer(100, e -> {
+            String currentTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+            setTitle(currentTime); // 更新标题
+            timelabel.setText(currentTime); // 更新标签内容
+        });
+        timer.start();
+
+------------------------------------------------------------------------
+/*資料送出
+
+JButton btnNewButton_2 = new JButton("資料送出");
+		btnNewButton_2.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String Account = account.getText();
+				Customer c=new CustomerDaoImpl().queryAccount(Account);
+				if (c != null) {
+		            AddCustomerErrorUi x = new AddCustomerErrorUi();
+		            x.setVisible(true);
+		            dispose();
+		        } else {
+		            String Name = name.getText();
+		            String Password = password.getText();
+		            String Address = address.getText();
+		            String Phone = phone.getText();
+
+		            if (Name.trim().isEmpty() || Account.trim().isEmpty() || Password.trim().isEmpty() || Address.trim().isEmpty() || Phone.trim().isEmpty()) {
+		                // Show some error message dialog
+		                JOptionPane.showMessageDialog(null, "所有欄位都必須填寫。", "錯誤", JOptionPane.ERROR_MESSAGE);
+		            } else {
+		                Customer c2 = new Customer(Name, Account, Password, Address, Phone);
+		                new CustomerDaoImpl().addCustomer(c2);
+
+		                AddCustomerSuccessUi w = new AddCustomerSuccessUi();
+		                w.setVisible(true);
+		                dispose();
+		            }
+			}
+		}});
+
+--------------------------------------------------------------------------
+/*
+JButton btnNewButton_2_1_1 = new JButton("回登入頁");
+		btnNewButton_2_1_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				LoginUi c=new LoginUi();
+				c.setVisible(true);
+				dispose();
+			}
+		});

@@ -1,0 +1,37 @@
+/*在jlabel欄位抓取檔案中物件的getName
+
+Purchase p = (Purchase) (cal.readFile("purchase.txt"));
+		show.setText(p.getName() + "您好,請再次確認您的購物清單");
+
+		int sum = p.getKakao() * 70 + p.getEspresso() * 60 + p.getLatte() * 75 + p.getAmericano() * 55
+				+ p.getTiramisu() * 120 + p.getBrownie() * 90;
+		String outputDetail = "以下為您的餐點品項及數量" + 
+				"\n-----------------------" + 
+				"\n飲品區" + "\nKakao :\t" + p.getKakao()
+				+ "\nEspresso :\t" + p.getEspresso() +
+				"\nLatte :\t" + p.getLatte() + 
+				"\nAmericano :\t"
+				+ p.getAmericano() + 
+				"\n-----------------------" + 
+				"\n甜點區" + 
+				"\nTiramisu :\t" + p.getTiramisu()+ 
+				"\nBrownie :\t" + p.getBrownie() + 
+				"\n-----------------------" + 
+				"\n合計 :" + sum + " 元";
+		output.setText(outputDetail);
+
+-------------------------------------------------------------------------------------
+/*
+
+		JButton btnNewButton = new JButton("訂單確認");
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				new PurchaseDaoImpl().add(p);
+				EndUi  q=new EndUi();
+				q.setVisible(true);
+				dispose();
+				
+				
+			}
+		});
